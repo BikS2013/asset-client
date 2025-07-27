@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-07-27
+
 ### Added
 - PostgreSQL parameter type safety with explicit type casting
 - `testConnection()` method to verify database connectivity and parameter handling
@@ -16,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - PostgreSQL "could not determine data type of parameter" errors
-- All queries now use explicit type casting (::text, ::uuid, ::timestamp)
+- All queries now use explicit type casting (::text, ::uuid, ::timestamp with time zone)
 - Improved compatibility with PostgreSQL versions 12+
 
 ### Changed
