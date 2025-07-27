@@ -22,3 +22,5 @@ export {
 
 // Utility exports
 export { calculateHash } from './utils/hash';
+export { QueryBuilder } from './utils/QueryBuilder';
+export { PreparedStatements } from './utils/PreparedStatements';

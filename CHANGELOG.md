@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- PostgreSQL parameter type safety with explicit type casting
+- `testConnection()` method to verify database connectivity and parameter handling
+- QueryBuilder utility class for constructing type-safe queries
+- PreparedStatements class for managing SQL queries with proper type annotations
+- Parameter validation for all public methods
+
+### Fixed
+- PostgreSQL "could not determine data type of parameter" errors
+- All queries now use explicit type casting (::text, ::uuid, ::timestamp)
+- Improved compatibility with PostgreSQL versions 12+
+
+### Changed
+- Internal query implementation to use type-annotated parameters
+- Enhanced error messages for invalid parameters
+
 ## [1.0.0] - 2024-01-XX
 
 ### Added

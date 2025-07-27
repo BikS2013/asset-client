@@ -154,6 +154,7 @@ The core client for retrieving assets from the database.
 class AssetClient {
   constructor(config: AssetClientConfig);
   getAsset(assetRegistry: string, assetKey: string): Promise<string>;
+  testConnection(): Promise<boolean>;
   close(): Promise<void>;
 }
 ```
@@ -212,6 +213,41 @@ class ResilientAssetClient extends AssetClient {
   exportFallbackCache(): string;
   importFallbackCache(data: string): void;
 }
+```
+
+## PostgreSQL Compatibility
+
+The library includes built-in PostgreSQL type safety with explicit parameter type casting to ensure compatibility across all PostgreSQL versions (12+). All queries use proper type annotations to prevent parameter type inference errors.
+
+### Testing Database Connection
+
+```typescript
+const client = new AssetClient({
+  connectionString: process.env.DATABASE_URL!,
+  userKey: 'my-app',
+});
+
+// Test connection and parameter handling
+const isConnected = await client.testConnection();
+if (!isConnected) {
+  console.error('Database connection failed');
+}
+```
+
+### Advanced Query Building (Optional)
+
+For advanced users who need custom queries, the library exports utility classes:
+
+```typescript
+import { QueryBuilder, PreparedStatements } from '@asset-management/client';
+
+// Use QueryBuilder for type-safe parameter casting
+const query = QueryBuilder.buildAssetQuery({ includeUserKey: true });
+// Result: SELECT ... WHERE asset_registry = $1::text AND asset_key = $2::text ...
+
+// Access pre-defined queries with proper type casting
+const statements = new PreparedStatements();
+const updateQuery = statements.get('updateRegistration');
 ```
 
 ## Error Handling
