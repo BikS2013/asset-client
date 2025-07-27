@@ -164,7 +164,7 @@ export class AssetClient {
         created_at, asset_id, user_key, asset_registry, asset_key,
         asset_class, asset_type, description, data, data_hash,
         registry_commit, registry_commit_url
-      ) VALUES ($1::timestamp, $2::uuid, $3::text, $4::text, $5::text, $6::text, $7::text, $8::text, $9::text, $10::text, $11::text, $12::text)
+      ) VALUES ($1::timestamp with time zone, $2::uuid, $3::text, $4::text, $5::text, $6::text, $7::text, $8::text, $9::text, $10::text, $11::text, $12::text)
     `;
     await client.query(query, [
       asset.created_at, asset.id, asset.user_key, asset.asset_registry,

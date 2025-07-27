@@ -1,6 +1,6 @@
 {
   "name": "@asset-management/client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript client library for asset management system",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
